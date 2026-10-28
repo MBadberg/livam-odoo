@@ -10,11 +10,11 @@ Legende: ☐ offen · ◐ in Arbeit · ☑ erledigt
 
 ## M1 — LiVaM: Tenant-/Domain-Konzept
 
-- ☐ Order-Webhook-Payload erweitern (`tenantSlug`, `domain`, `customerEmail`,
+- ☑ Order-Webhook-Payload erweitern (`tenantSlug`, `domain`, `customerEmail`,
   `customerName`, `billingCycle`)
-- ☐ Slug-/Domain-Registry + Verfügbarkeits-Endpoint `POST /tenants/check-availability`
-- ☐ `SaaSProvisioner` um Slug/Domain erweitern; Rückgabe `tenantUrl`/Zugangsdaten/DNS
-- ☐ Unit- + Negativtests
+- ☑ Slug-/Domain-Registry + Verfügbarkeits-Endpoint `POST /tenants/check-availability`
+- ☑ `SaaSProvisioner` um Slug/Domain erweitern; Rückgabe `tenantUrl`/Zugangsdaten/DNS
+- ☑ Unit- + Negativtests
 
 ## M2 — LiVaM: Multi-SaaS-Instanz
 
