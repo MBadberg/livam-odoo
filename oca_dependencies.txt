@@ -1,0 +1,2 @@
+# OCA-Abhängigkeiten (Branch 19.0), werden von der CI geklont.
+contract
