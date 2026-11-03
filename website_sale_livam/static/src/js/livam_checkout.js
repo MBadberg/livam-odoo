@@ -5,7 +5,7 @@ odoo.define("website_sale_livam.checkout", function (require) {
     const ajax = require("web.ajax");
 
     publicWidget.registry.LivamCheckout = publicWidget.Widget.extend({
-        selector: "#livam_checkout_fields",
+        selector: "#livam_tenant_form",
 
         events: {
             "change input[name='livam_tenant_slug']": "_onChange",

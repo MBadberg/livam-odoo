@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="checkout_step_livam_tenant" model="website.checkout.step">
+        <field name="name">LiVaM Tenant</field>
+        <field name="sequence">750</field>
+        <field name="step_href">/shop/livam_tenant</field>
+        <field name="main_button_label">Weiter</field>
+        <field name="back_button_label">Zurück</field>
+    </record>
+</odoo>

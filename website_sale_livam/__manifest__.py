@@ -8,6 +8,7 @@
     "website": "https://github.com/MBadberg/livam-odoo",
     "depends": ["website_sale", "livam_sale"],
     "data": [
+        "data/checkout_step.xml",
         "views/checkout_template.xml",
     ],
     "assets": {
@@ -15,6 +16,7 @@
             "website_sale_livam/static/src/js/livam_checkout.js",
         ],
     },
+    "post_init_hook": "post_init_hook",
     "installable": True,
     "application": False,
     "auto_install": False,

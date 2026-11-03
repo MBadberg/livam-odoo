@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="checkout_livam_fields"
-              name="LiVaM Tenant-Felder im Checkout"
-              inherit_id="website_sale.checkout">
-        <xpath expr="//form" position="inside">
-            <div id="livam_checkout_fields" class="row mb-4">
-                <div class="col-12">
-                    <h3 class="mb-3">LiVaM Tenant</h3>
+    <template id="livam_tenant" name="LiVaM Tenant">
+        <t t-call="website_sale.checkout_layout">
+            <t t-set="redirect" t-valuef="/shop/livam_tenant"/>
+            <t t-set="show_navigation_button" t-value="False"/>
+            <div id="livam_tenant_form" class="mb-4">
+                <h4 class="mb-3">LiVaM Tenant</h4>
+                <div t-if="error" class="alert alert-danger" role="alert">
+                    <t t-out="error"/>
+                </div>
+                <form action="/shop/livam_tenant/save" method="POST">
+                    <input type="hidden" name="csrf_token"
+                           t-att-value="request.csrf_token()"/>
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label for="livam_tenant_slug">Tenant-Wunschname</label>
                             <input type="text" name="livam_tenant_slug"
                                    id="livam_tenant_slug" class="form-control"
-                                   placeholder="z.B. hans"/>
+                                   placeholder="z.B. hans"
+                                   t-att-value="order.livam_tenant_slug"/>
                             <small class="form-text text-muted">
                                 Subdomain: hans.lingavena.de
                             </small>
@@ -21,24 +27,32 @@
                             <label for="livam_domain">Oder eigene Domain</label>
                             <input type="text" name="livam_domain"
                                    id="livam_domain" class="form-control"
-                                   placeholder="z.B. praxis-muster.de"/>
+                                   placeholder="z.B. praxis-muster.de"
+                                   t-att-value="order.livam_domain"/>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt16">
                         <div class="col-md-6 form-group">
                             <label for="livam_billing_cycle">Abrechnungszyklus</label>
                             <select name="livam_billing_cycle"
                                     id="livam_billing_cycle" class="form-control">
-                                <option value="monthly">Monatlich</option>
-                                <option value="yearly">Jährlich</option>
+                                <option value="monthly"
+                                        t-att-selected="order.livam_billing_cycle == 'monthly'">Monatlich</option>
+                                <option value="yearly"
+                                        t-att-selected="order.livam_billing_cycle == 'yearly'">Jährlich</option>
                             </select>
                         </div>
                         <div class="col-md-6 form-group">
                             <span id="livam_availability" class="form-text"/>
                         </div>
                     </div>
-                </div>
+                    <div class="mt16 d-flex justify-content-between">
+                        <a t-att-href="previous_website_checkout_step.step_href"
+                           class="btn btn-secondary">Zurück</a>
+                        <button type="submit" class="btn btn-primary">Weiter</button>
+                    </div>
+                </form>
             </div>
-        </xpath>
+        </t>
     </template>
 </odoo>
