@@ -21,7 +21,6 @@ DOMAIN_RE = re.compile(
 
 
 class WebsiteSaleLivam(WebsiteSale):
-
     def _livam_validate_values(self, tenant_slug, domain):
         """Return an error message string, or ``None`` when valid.
 
@@ -50,13 +49,14 @@ class WebsiteSaleLivam(WebsiteSale):
                 domain=domain or None,
             )
         except LivamApiError as exc:
-            _logger.warning(
-                "LiVaM-Verfügbarkeitsprüfung fehlgeschlagen: %s", exc
-            )
+            _logger.warning("LiVaM-Verfügbarkeitsprüfung fehlgeschlagen: %s", exc)
             return None
 
     @http.route(
-        "/shop/livam_tenant", type="http", auth="public", website=True,
+        "/shop/livam_tenant",
+        type="http",
+        auth="public",
+        website=True,
         sitemap=False,
     )
     def livam_tenant(self, **post):
@@ -72,8 +72,13 @@ class WebsiteSaleLivam(WebsiteSale):
         return request.render("website_sale_livam.livam_tenant", values)
 
     @http.route(
-        "/shop/livam_tenant/save", type="http", methods=["POST"],
-        auth="public", website=True, csrf=True, sitemap=False,
+        "/shop/livam_tenant/save",
+        type="http",
+        methods=["POST"],
+        auth="public",
+        website=True,
+        csrf=True,
+        sitemap=False,
     )
     def livam_tenant_save(self, **post):
         order_sudo = request.cart
@@ -110,7 +115,9 @@ class WebsiteSaleLivam(WebsiteSale):
         return request.redirect("/shop/payment")
 
     @http.route(
-        "/shop/livam/check_availability", type="json", auth="public",
+        "/shop/livam/check_availability",
+        type="json",
+        auth="public",
         website=True,
     )
     def livam_check_availability(self, tenant_slug=None, domain=None):

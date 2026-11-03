@@ -15,4 +15,3 @@ def post_init_hook(env):
             ]
         ):
             generic.copy({"website_id": website.id, "is_published": True})
-

@@ -80,9 +80,7 @@ class LivamInstallation(models.Model):
         self.ensure_one()
         client = common.get_client(self.env)
         try:
-            data = client.operator_request(
-                "GET", "/installations/%s" % self.livam_id
-            )
+            data = client.operator_request("GET", "/installations/%s" % self.livam_id)
         except common.LivamApiError as exc:
             raise common.api_error(exc) from exc
         inst = data.get("installation") or {}

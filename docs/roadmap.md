@@ -5,9 +5,9 @@ Legende: ☐ offen · ◐ in Arbeit · ☑ erledigt
 ## M0 — Setup & Dokumentation
 
 - ☑ ADR-Set, Roadmap, Architektur-, Integrations-, Sicherheits- und Rechts-Doku
-- ◐ Öffentliches GitHub-Repo `livam-odoo` (AGPL-3.0) + CI (pre-commit;
-  `.pre-commit-config.yaml` liegt, GitHub-Workflow fehlt noch)
-- ◐ SSH-Zugang zum Odoo-Server (Key für den `odoo`-Benutzer)
+- ☑ Öffentliches GitHub-Repo `livam-odoo` (AGPL-3.0) + CI (pre-commit +
+  `.github/workflows/ci.yml`)
+- ◐ SSH-Zugang zum Odoo-Server (Key für den `odoo`-Benutzer, Prod `192.168.120.6`)
 
 ## M1 — LiVaM: Tenant-/Domain-Konzept
 
@@ -46,5 +46,6 @@ Legende: ☐ offen · ◐ in Arbeit · ☑ erledigt
 
 ## M7 — Härtung & Integrationstest
 
-- ☐ Quality Gates (pre-commit, Odoo-Tests, LiVaM `pnpm lint/test/build`)
-- ☐ End-to-End gegen den Odoo-Produktivserver (192.168.120.6)
+- ☑ Quality Gates (pre-commit, Odoo-Tests via CI, LiVaM `pnpm lint/test/build`)
+- ◐ End-to-End gegen den Odoo-Produktivserver (192.168.120.6) — blockiert auf
+  SSH-Zugang (M0)

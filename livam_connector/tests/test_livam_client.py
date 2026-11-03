@@ -93,9 +93,7 @@ class TestLivamClient(TransactionCase):
         client, opener = self.make_client(
             [_FakeResponse(b'{"license":{"id":"lic_1"}}')]
         )
-        result = client.create_order(
-            {"orderId": "SO1", "tenantSlug": "hans"}
-        )
+        result = client.create_order({"orderId": "SO1", "tenantSlug": "hans"})
         self.assertEqual(result["license"]["id"], "lic_1")
         request = opener.calls[0][0]
         self.assertEqual(request.full_url, "https://lus.example/webhooks/orders")

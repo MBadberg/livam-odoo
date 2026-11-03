@@ -223,9 +223,7 @@ class TestLivamManagement(TransactionCase):
         )
         self.fake.license_single = license_dict("lic_1")
         lic.action_renew()
-        self.assertIn(
-            ("POST", "/licenses/lic_1/renew", {"days": 365}), self.fake.calls
-        )
+        self.assertIn(("POST", "/licenses/lic_1/renew", {"days": 365}), self.fake.calls)
 
     def test_suspend_and_activate(self):
         lic = self.env["livam.license"].create({"livam_id": "lic_1", "name": "hans"})
@@ -363,6 +361,3 @@ class TestLivamManagement(TransactionCase):
             ),
             self.fake.calls,
         )
-
-
-

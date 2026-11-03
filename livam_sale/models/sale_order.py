@@ -42,15 +42,11 @@ class SaleOrder(models.Model):
         help="Komma-getrennte Lingavena-Feature-Keys "
         "(z.B. WEBSITE_BUILDER,BILLING).",
     )
-    livam_tenant_url = fields.Char(
-        string="Tenant-URL", readonly=True, copy=False
-    )
+    livam_tenant_url = fields.Char(string="Tenant-URL", readonly=True, copy=False)
     livam_provisioning_status = fields.Char(
         string="Provisioning-Status", readonly=True, copy=False
     )
-    livam_marked_paid = fields.Boolean(
-        string="Erstzahlung bestätigt", copy=False
-    )
+    livam_marked_paid = fields.Boolean(string="Erstzahlung bestätigt", copy=False)
 
     # -- helper ------------------------------------------------------------
 
@@ -58,9 +54,7 @@ class SaleOrder(models.Model):
         self.ensure_one()
         if not self.livam_features:
             return []
-        return [
-            key.strip() for key in self.livam_features.split(",") if key.strip()
-        ]
+        return [key.strip() for key in self.livam_features.split(",") if key.strip()]
 
     def _livam_ends_at(self):
         self.ensure_one()
@@ -81,8 +75,7 @@ class SaleOrder(models.Model):
             )
         if has_slug and not SLUG_RE.match(self.livam_tenant_slug.strip()):
             raise UserError(
-                _("Ungültiger Tenant-Wunschname '%s'.")
-                % self.livam_tenant_slug.strip()
+                _("Ungültiger Tenant-Wunschname '%s'.") % self.livam_tenant_slug.strip()
             )
 
     def _livam_order_payload(self):
@@ -148,9 +141,7 @@ class SaleOrder(models.Model):
             {
                 "livam_license_id": license_data.get("id"),
                 "livam_tenant_url": (result or {}).get("tenantUrl"),
-                "livam_provisioning_status": license_data.get(
-                    "provisioningStatus"
-                ),
+                "livam_provisioning_status": license_data.get("provisioningStatus"),
             }
         )
 
@@ -159,11 +150,11 @@ class SaleOrder(models.Model):
         contract_model = self.env.get("contract.contract")
         if not contract_model:
             return False
-        recurring = (
-            "yearly" if self.livam_billing_cycle == "yearly" else "monthly"
-        )
+        recurring = "yearly" if self.livam_billing_cycle == "yearly" else "monthly"
         line_vals = []
-        for line in self.order_line.filtered(lambda l: not l.display_type):
+        for line in self.order_line.filtered(
+            lambda order_line: not order_line.display_type
+        ):
             line_vals.append(
                 (
                     0,
@@ -219,4 +210,3 @@ class SaleOrder(models.Model):
         res = super().action_confirm()
         self._livam_provision()
         return res
-

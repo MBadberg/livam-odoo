@@ -87,9 +87,9 @@ class LivamClient:
         data = None
         headers = {"Accept": "application/json"}
         if payload is not None:
-            data = json.dumps(
-                payload, sort_keys=True, separators=(",", ":")
-            ).encode("utf-8")
+            data = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode(
+                "utf-8"
+            )
             headers["Content-Type"] = "application/json"
 
         if auth == "bearer":
@@ -103,9 +103,7 @@ class LivamClient:
                 raise LivamApiError(
                     "Webhook-Aufrufe benötigen einen Payload zum Signieren."
                 )
-            headers["X-Webhook-Signature"] = sign_webhook(
-                self.webhook_secret, data
-            )
+            headers["X-Webhook-Signature"] = sign_webhook(self.webhook_secret, data)
         else:
             raise LivamApiError("Unbekannter Auth-Modus: %r" % auth)
 
@@ -188,4 +186,3 @@ def get_livam_client(env):
         webhook_secret=get_param("livam.webhook_secret"),
         timeout=timeout,
     )
-

@@ -54,9 +54,7 @@ class TestSaleOrder(TransactionCase):
         return self.env["sale.order"].create(vals)
 
     def test_validate_identifier_rejects_both(self):
-        order = self._order(
-            livam_tenant_slug="hans", livam_domain="praxis-muster.de"
-        )
+        order = self._order(livam_tenant_slug="hans", livam_domain="praxis-muster.de")
         with self.assertRaises(UserError):
             order._livam_validate_identifier()
 
@@ -136,9 +134,7 @@ class TestSaleOrder(TransactionCase):
         self.assertEqual(
             fake.operator_calls[0][:2], ("POST", "/licenses/lic_1/mark-paid")
         )
-        self.assertEqual(
-            fake.operator_calls[1][:2], ("POST", "/licenses/lic_1/renew")
-        )
+        self.assertEqual(fake.operator_calls[1][:2], ("POST", "/licenses/lic_1/renew"))
         self.assertEqual(fake.operator_calls[1][2], {"days": 30})
 
 
@@ -149,8 +145,11 @@ class TestAccountMove(TransactionCase):
 
     def test_sync_skips_when_already_synced(self):
         move = self.env["account.move"].new(
-            {"move_type": "out_invoice", "partner_id": self.partner.id,
-             "livam_synced": True}
+            {
+                "move_type": "out_invoice",
+                "partner_id": self.partner.id,
+                "livam_synced": True,
+            }
         )
         fake = FakeLivamClient()
         with mock.patch(

@@ -132,4 +132,3 @@ class LivamLicenseCreateWizard(models.TransientModel):
             raise common.api_error(exc) from exc
         self.env["livam.license"].action_sync()
         return {"type": "ir.actions.act_window_close"}
-

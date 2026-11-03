@@ -237,4 +237,3 @@ class LivamLicense(models.Model):
             {"saasInstanceRef": target_instance.ref},
         )
         return self.action_sync_one()
-

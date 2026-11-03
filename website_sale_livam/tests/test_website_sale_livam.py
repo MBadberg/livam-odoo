@@ -24,6 +24,4 @@ class TestWebsiteSaleLivam(TransactionCase):
         self.assertIsNone(self.ctrl._livam_validate_values("hans", ""))
 
     def test_validate_accepts_domain(self):
-        self.assertIsNone(
-            self.ctrl._livam_validate_values("", "praxis-muster.de")
-        )
+        self.assertIsNone(self.ctrl._livam_validate_values("", "praxis-muster.de"))
