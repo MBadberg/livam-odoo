@@ -5,49 +5,40 @@
         <field name="model">res.config.settings</field>
         <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[hasclass('settings')]" position="inside">
-                <div class="app_settings_block"
-                     data-string="LiVaM" string="LiVaM" data-key="livam">
-                    <h2>LiVaM</h2>
-                    <div class="row mt16 o_settings_container">
-                        <div class="col-12 col-lg-6 o_setting_box">
-                            <div class="o_setting_left_pane"/>
-                            <div class="o_setting_right_pane">
-                                <label for="livam_base_url"/>
-                                <div class="text-muted">
-                                    Verbindung zur LiVaM-Lizenz- und
-                                    Provisioning-API.
+            <xpath expr="//form" position="inside">
+                <app data-string="LiVaM" string="LiVaM" name="livam">
+                    <block title="LiVaM" name="livam_connection_setting_container">
+                        <setting id="livam_base_url_setting"
+                                 string="Verbindung"
+                                 help="Verbindung zur LiVaM-Lizenz- und Provisioning-API.">
+                            <div class="content-group">
+                                <div class="mt16 row">
+                                    <label for="livam_base_url"
+                                           class="col-3 col-lg-3 o_light_label"/>
+                                    <field name="livam_base_url" class="col-6"
+                                           placeholder="https://lus.lingavena.de"/>
                                 </div>
-                                <div class="content-group">
-                                    <div class="row mt16">
-                                        <label for="livam_base_url"
-                                               class="col-lg-3 o_light_label"/>
-                                        <field name="livam_base_url"
-                                               class="col-lg-9"
-                                               placeholder="https://lus.lingavena.de"/>
-                                    </div>
-                                    <div class="row mt16">
-                                        <label for="livam_operator_token"
-                                               class="col-lg-3 o_light_label"/>
-                                        <field name="livam_operator_token"
-                                               class="col-lg-9" password="1"/>
-                                    </div>
-                                    <div class="row mt16">
-                                        <label for="livam_webhook_secret"
-                                               class="col-lg-3 o_light_label"/>
-                                        <field name="livam_webhook_secret"
-                                               class="col-lg-9" password="1"/>
-                                    </div>
-                                    <div class="row mt16">
-                                        <label for="livam_timeout"
-                                               class="col-lg-3 o_light_label"/>
-                                        <field name="livam_timeout" class="col-lg-3"/>
-                                    </div>
+                                <div class="mt16 row">
+                                    <label for="livam_operator_token"
+                                           class="col-3 col-lg-3 o_light_label"/>
+                                    <field name="livam_operator_token"
+                                           class="col-6" password="1"/>
+                                </div>
+                                <div class="mt16 row">
+                                    <label for="livam_webhook_secret"
+                                           class="col-3 col-lg-3 o_light_label"/>
+                                    <field name="livam_webhook_secret"
+                                           class="col-6" password="1"/>
+                                </div>
+                                <div class="mt16 row">
+                                    <label for="livam_timeout"
+                                           class="col-3 col-lg-3 o_light_label"/>
+                                    <field name="livam_timeout" class="col-2"/>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                        </setting>
+                    </block>
+                </app>
             </xpath>
         </field>
     </record>

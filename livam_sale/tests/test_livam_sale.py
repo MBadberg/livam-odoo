@@ -148,7 +148,7 @@ class TestAccountMove(TransactionCase):
         self.partner = self.env["res.partner"].create({"name": "Hans Praxis"})
 
     def test_sync_skips_when_already_synced(self):
-        move = self.env["account.move"].create(
+        move = self.env["account.move"].new(
             {"move_type": "out_invoice", "partner_id": self.partner.id,
              "livam_synced": True}
         )
@@ -161,7 +161,7 @@ class TestAccountMove(TransactionCase):
         self.assertEqual(fake.operator_calls, [])
 
     def test_sync_skips_non_invoice(self):
-        move = self.env["account.move"].create(
+        move = self.env["account.move"].new(
             {"move_type": "entry", "partner_id": self.partner.id}
         )
         fake = FakeLivamClient()

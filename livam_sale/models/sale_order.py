@@ -117,10 +117,8 @@ class SaleOrder(models.Model):
         self._livam_validate_identifier()
         client = get_livam_client(self.env)
         return client.check_tenant_availability(
-            tenant_slug=(
-                self.livam_tenant_slug and self.livam_tenant_slug.strip()
-            ),
-            domain=self.livam_domain and self.livam_domain.strip(),
+            tenant_slug=(self.livam_tenant_slug or "").strip() or None,
+            domain=(self.livam_domain or "").strip() or None,
         )
 
     # -- provisioning ------------------------------------------------------
