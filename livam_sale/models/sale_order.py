@@ -107,6 +107,22 @@ class SaleOrder(models.Model):
             payload["features"] = features
         return payload
 
+    def _livam_check_availability(self):
+        """Check tenant slug/domain availability via LiVaM.
+
+        Returns the LiVaM response dict (e.g. ``{"available": True}``); a
+        taken identity is a normal result, not an error.
+        """
+        self.ensure_one()
+        self._livam_validate_identifier()
+        client = get_livam_client(self.env)
+        return client.check_tenant_availability(
+            tenant_slug=(
+                self.livam_tenant_slug and self.livam_tenant_slug.strip()
+            ),
+            domain=self.livam_domain and self.livam_domain.strip(),
+        )
+
     # -- provisioning ------------------------------------------------------
 
     def _livam_provision(self):

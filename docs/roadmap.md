@@ -30,10 +30,10 @@ Legende: ☐ offen · ◐ in Arbeit · ☑ erledigt
 
 ## M4 — Odoo: `livam_sale`
 
-- ☐ Order-Webhook bei Bestellabschluss, Lizenz-ID am `sale.order`
-- ☐ OCA-`contract`-Erzeugung (monatlich/jährlich)
-- ☐ `mark-paid` (erste Rechnung) / `renew` (Folgeperioden)
-- ☐ Tenant-/Domain-Felder + Verfügbarkeits-Check
+- ☑ Order-Webhook bei Bestellabschluss, Lizenz-ID am `sale.order`
+- ☑ OCA-`contract`-Erzeugung (monatlich/jährlich)
+- ☑ `mark-paid` (erste Rechnung) / `renew` (Folgeperioden)
+- ☑ Tenant-/Domain-Felder + Verfügbarkeits-Check
 
 ## M5 — Odoo: `website_sale_livam`
 

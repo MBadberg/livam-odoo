@@ -9,10 +9,16 @@ class FakeLivamClient:
         self.create_order_response = create_order_response or {}
         self.create_order_calls = []
         self.operator_calls = []
+        self.availability_calls = []
+        self.availability_response = {"available": True}
 
     def create_order(self, payload):
         self.create_order_calls.append(payload)
         return self.create_order_response
+
+    def check_tenant_availability(self, tenant_slug=None, domain=None):
+        self.availability_calls.append((tenant_slug, domain))
+        return self.availability_response
 
     def operator_request(self, method, path, payload=None):
         self.operator_calls.append((method, path, payload))
@@ -104,6 +110,18 @@ class TestSaleOrder(TransactionCase):
         ):
             order._livam_provision()
         self.assertEqual(fake.create_order_calls, [])
+
+    def test_check_availability(self):
+        fake = FakeLivamClient()
+        fake.availability_response = {"available": False, "reason": "taken"}
+        order = self._order(livam_tenant_slug="hans")
+        with mock.patch(
+            "odoo.addons.livam_sale.models.sale_order.get_livam_client",
+            return_value=fake,
+        ):
+            result = order._livam_check_availability()
+        self.assertEqual(result, {"available": False, "reason": "taken"})
+        self.assertEqual(fake.availability_calls, [("hans", None)])
 
     def test_apply_payment_first_then_renew(self):
         order = self._order(livam_tenant_slug="hans", livam_license_id="lic_1")
