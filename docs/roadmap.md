@@ -37,7 +37,7 @@ Legende: ☐ offen · ◐ in Arbeit · ☑ erledigt
 
 ## M5 — Odoo: `website_sale_livam`
 
-- ☐ Shop-Frontend: Tenant-Wunschname oder eigene Domain, Zyklus-Auswahl, Bestätigung
+- ☑ Shop-Frontend: Tenant-Wunschname oder eigene Domain, Zyklus-Auswahl, Bestätigung
 
 ## M6 — Odoo: `livam_management`
 
