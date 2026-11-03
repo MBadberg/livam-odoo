@@ -27,9 +27,18 @@ def api_error(exc):
 
 
 def parse_dt(value):
-    """Normalise a LiVaM ISO-8601 datetime string into an Odoo Datetime value."""
+    """Normalise a LiVaM ISO-8601 datetime string into an Odoo Datetime value.
+
+    LiVaM returns UTC ISO-8601 timestamps (e.g. ``2026-11-01T00:00:00.000Z``).
+    Odoo's ``fields.Datetime`` parser expects the naive ``YYYY-MM-DD HH:MM:SS``
+    form, so the timezone suffix and fractional seconds are dropped.
+    """
     if not value:
         return False
-    if isinstance(value, str) and value.endswith("Z"):
-        return value[:-1] + "+00:00"
-    return value
+    text = str(value).replace("T", " ", 1)
+    if "." in text:
+        text = text.split(".", 1)[0]
+    text = text.replace("Z", "")
+    if "+" in text:
+        text = text.split("+", 1)[0]
+    return text[:19]

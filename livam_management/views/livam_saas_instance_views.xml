@@ -4,7 +4,7 @@
         <field name="name">livam.saas.instance.tree</field>
         <field name="model">livam.saas.instance</field>
         <field name="arch" type="xml">
-            <tree create="false">
+            <list create="false">
                 <field name="name"/>
                 <field name="ref"/>
                 <field name="status" widget="badge"
@@ -14,7 +14,7 @@
                 <field name="base_url"/>
                 <field name="active_tenant_count"/>
                 <field name="capacity"/>
-            </tree>
+            </list>
         </field>
     </record>
 

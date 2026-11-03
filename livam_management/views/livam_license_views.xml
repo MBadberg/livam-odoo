@@ -4,7 +4,7 @@
         <field name="name">livam.license.tree</field>
         <field name="model">livam.license</field>
         <field name="arch" type="xml">
-            <tree create="false">
+            <list create="false">
                 <field name="name"/>
                 <field name="license_type"/>
                 <field name="status" widget="badge"
@@ -20,7 +20,7 @@
                 <field name="saas_instance_id"/>
                 <field name="ends_at"/>
                 <field name="installation_count"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -32,15 +32,15 @@
                 <header>
                     <button name="action_mark_paid" type="object" string="Als bezahlt markieren"
                             confirm="Diese Lizenz in LiVaM als bezahlt markieren?"
-                            attrs="{'invisible': [('payment_status', '=', 'paid')]}"/>
+                            invisible="[('payment_status', '=', 'paid')]"/>
                     <button name="action_renew" type="object" string="Verlängern"
                             confirm="Laufzeit in LiVaM verlängern?"/>
                     <button name="action_suspend" type="object" string="Suspendieren"
                             confirm="Lizenz in LiVaM suspendieren?"
-                            attrs="{'invisible': [('status', '!=', 'active')]}"/>
+                            invisible="[('status', '!=', 'active')]"/>
                     <button name="action_activate" type="object" string="Aktivieren"
                             confirm="Lizenz in LiVaM aktivieren?"
-                            attrs="{'invisible': [('status', '!=', 'suspended')]}"/>
+                            invisible="[('status', '!=', 'suspended')]"/>
                     <button name="%(action_livam_license_features_wizard)d" type="action"
                             string="Features"/>
                     <button name="%(action_livam_move_license_wizard)d" type="action"

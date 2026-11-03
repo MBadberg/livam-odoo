@@ -4,14 +4,14 @@
         <field name="name">livam.release.tree</field>
         <field name="model">livam.release</field>
         <field name="arch" type="xml">
-            <tree create="false">
+            <list create="false">
                 <field name="name"/>
                 <field name="channel"/>
                 <field name="version"/>
                 <field name="enabled" widget="boolean_toggle"/>
                 <field name="image_name"/>
                 <field name="released_at"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -23,10 +23,10 @@
                 <header>
                     <button name="action_activate" type="object" string="Aktivieren"
                             confirm="Release in LiVaM aktivieren?"
-                            attrs="{'invisible': [('enabled', '=', True)]}"/>
+                            invisible="[('enabled', '=', True)]"/>
                     <button name="action_deactivate" type="object" string="Deaktivieren"
                             confirm="Release in LiVaM deaktivieren?"
-                            attrs="{'invisible': [('enabled', '=', False)]}"/>
+                            invisible="[('enabled', '=', False)]"/>
                     <button name="action_sync" type="object" string="Aktualisieren"/>
                 </header>
                 <sheet>
