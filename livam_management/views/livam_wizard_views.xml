@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_livam_license_features_wizard_form" model="ir.ui.view">
+        <field name="name">livam.license.features.wizard.form</field>
+        <field name="model">livam.license.features.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Features bearbeiten">
+                <group>
+                    <field name="license_id" invisible="1"/>
+                    <field name="feature_ids" widget="many2many_tags"/>
+                </group>
+                <footer>
+                    <button name="action_apply" type="object" string="Übernehmen"
+                            class="btn-primary"/>
+                    <button string="Abbrechen" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_livam_license_features_wizard" model="ir.actions.act_window">
+        <field name="name">Features bearbeiten</field>
+        <field name="res_model">livam.license.features.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_livam_move_license_wizard_form" model="ir.ui.view">
+        <field name="name">livam.move.license.wizard.form</field>
+        <field name="model">livam.move.license.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Lizenz verschieben">
+                <group>
+                    <field name="license_id" invisible="1"/>
+                    <field name="target_instance_id"/>
+                </group>
+                <footer>
+                    <button name="action_move" type="object" string="Verschieben"
+                            class="btn-primary"/>
+                    <button string="Abbrechen" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_livam_move_license_wizard" model="ir.actions.act_window">
+        <field name="name">Lizenz verschieben</field>
+        <field name="res_model">livam.move.license.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_livam_saas_instance_wizard_form" model="ir.ui.view">
+        <field name="name">livam.saas.instance.wizard.form</field>
+        <field name="model">livam.saas.instance.wizard</field>
+        <field name="arch" type="xml">
+            <form string="SaaS-Instanz registrieren">
+                <group>
+                    <field name="name"/>
+                    <field name="ref"/>
+                    <field name="base_url"/>
+                    <field name="capacity"/>
+                    <field name="status"/>
+                </group>
+                <footer>
+                    <button name="action_register" type="object" string="Registrieren"
+                            class="btn-primary"/>
+                    <button string="Abbrechen" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_livam_saas_instance_wizard" model="ir.actions.act_window">
+        <field name="name">SaaS-Instanz registrieren</field>
+        <field name="res_model">livam.saas.instance.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_livam_license_create_wizard_form" model="ir.ui.view">
+        <field name="name">livam.license.create.wizard.form</field>
+        <field name="model">livam.license.create.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Lizenz anlegen">
+                <group>
+                    <field name="license_type"/>
+                    <field name="max_instances"/>
+                    <field name="auto_renew"/>
+                    <field name="ends_at"/>
+                    <field name="license_key"/>
+                    <field name="feature_ids" widget="many2many_tags"/>
+                </group>
+                <footer>
+                    <button name="action_create" type="object" string="Anlegen"
+                            class="btn-primary"/>
+                    <button string="Abbrechen" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_livam_license_create_wizard" model="ir.actions.act_window">
+        <field name="name">Lizenz anlegen</field>
+        <field name="res_model">livam.license.create.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
+

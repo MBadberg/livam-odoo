@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="feature_website_builder" model="livam.feature">
+            <field name="key">WEBSITE_BUILDER</field>
+            <field name="name">Website-Builder</field>
+        </record>
+        <record id="feature_cms" model="livam.feature">
+            <field name="key">CMS</field>
+            <field name="name">CMS</field>
+        </record>
+        <record id="feature_custom_domains" model="livam.feature">
+            <field name="key">CUSTOM_DOMAINS</field>
+            <field name="name">Eigene Domains</field>
+        </record>
+        <record id="feature_multiple_domains" model="livam.feature">
+            <field name="key">MULTIPLE_DOMAINS</field>
+            <field name="name">Mehrere Domains</field>
+        </record>
+        <record id="feature_custom_certificates" model="livam.feature">
+            <field name="key">CUSTOM_CERTIFICATES</field>
+            <field name="name">Eigene Zertifikate</field>
+        </record>
+        <record id="feature_appointments" model="livam.feature">
+            <field name="key">APPOINTMENTS</field>
+            <field name="name">Termine</field>
+        </record>
+        <record id="feature_notifications" model="livam.feature">
+            <field name="key">NOTIFICATIONS</field>
+            <field name="name">Benachrichtigungen</field>
+        </record>
+        <record id="feature_billing" model="livam.feature">
+            <field name="key">BILLING</field>
+            <field name="name">Abrechnung</field>
+        </record>
+        <record id="feature_document_management" model="livam.feature">
+            <field name="key">DOCUMENT_MANAGEMENT</field>
+            <field name="name">Dokumentenverwaltung</field>
+        </record>
+        <record id="feature_patient_records" model="livam.feature">
+            <field name="key">PATIENT_RECORDS</field>
+            <field name="name">Patientenakten</field>
+        </record>
+        <record id="feature_therapy_documentation" model="livam.feature">
+            <field name="key">THERAPY_DOCUMENTATION</field>
+            <field name="name">Therapiedokumentation</field>
+        </record>
+        <record id="feature_prescriptions" model="livam.feature">
+            <field name="key">PRESCRIPTIONS</field>
+            <field name="name">Heilmittelverordnungen</field>
+        </record>
+    </data>
+</odoo>

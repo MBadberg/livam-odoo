@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_livam_release_tree" model="ir.ui.view">
+        <field name="name">livam.release.tree</field>
+        <field name="model">livam.release</field>
+        <field name="arch" type="xml">
+            <tree create="false">
+                <field name="name"/>
+                <field name="channel"/>
+                <field name="version"/>
+                <field name="enabled" widget="boolean_toggle"/>
+                <field name="image_name"/>
+                <field name="released_at"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_livam_release_form" model="ir.ui.view">
+        <field name="name">livam.release.form</field>
+        <field name="model">livam.release</field>
+        <field name="arch" type="xml">
+            <form string="LiVaM-Release">
+                <header>
+                    <button name="action_activate" type="object" string="Aktivieren"
+                            confirm="Release in LiVaM aktivieren?"
+                            attrs="{'invisible': [('enabled', '=', True)]}"/>
+                    <button name="action_deactivate" type="object" string="Deaktivieren"
+                            confirm="Release in LiVaM deaktivieren?"
+                            attrs="{'invisible': [('enabled', '=', False)]}"/>
+                    <button name="action_sync" type="object" string="Aktualisieren"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="livam_id"/>
+                            <field name="channel"/>
+                            <field name="version"/>
+                            <field name="enabled"/>
+                        </group>
+                        <group>
+                            <field name="image_name"/>
+                            <field name="image_digest"/>
+                            <field name="sbom_checksum"/>
+                            <field name="released_at"/>
+                            <field name="last_synced_at"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_livam_release" model="ir.actions.act_window">
+        <field name="name">Releases</field>
+        <field name="res_model">livam.release</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

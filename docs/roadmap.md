@@ -41,8 +41,8 @@ Legende: ☐ offen · ◐ in Arbeit · ☑ erledigt
 
 ## M6 — Odoo: `livam_management`
 
-- ☐ Backend-Spiegelung: Lizenzen, Installationen, Releases, SaaS-Instanzen
-- ☐ Tenant-Verschieben + direkte Kunden-/Partner-Zuordnung
+- ☑ Backend-Spiegelung: Lizenzen, Installationen, Releases, SaaS-Instanzen
+- ☑ Tenant-Verschieben + direkte Kunden-/Partner-Zuordnung
 
 ## M7 — Härtung & Integrationstest
 

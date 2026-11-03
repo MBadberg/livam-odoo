@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_livam_license_manager,livam.license.manager,model_livam_license,group_livam_manager,1,1,1,1
+access_livam_installation_manager,livam.installation.manager,model_livam_installation,group_livam_manager,1,1,1,1
+access_livam_release_manager,livam.release.manager,model_livam_release,group_livam_manager,1,1,1,1
+access_livam_saas_instance_manager,livam.saas.instance.manager,model_livam_saas_instance,group_livam_manager,1,1,1,1
+access_livam_feature_manager,livam.feature.manager,model_livam_feature,group_livam_manager,1,0,0,0
+access_livam_license_features_wizard,livam.license.features.wizard,model_livam_license_features_wizard,group_livam_manager,1,1,1,1
+access_livam_move_license_wizard,livam.move.license.wizard,model_livam_move_license_wizard,group_livam_manager,1,1,1,1
+access_livam_saas_instance_wizard,livam.saas.instance.wizard,model_livam_saas_instance_wizard,group_livam_manager,1,1,1,1
+access_livam_license_create_wizard,livam.license.create.wizard,model_livam_license_create_wizard,group_livam_manager,1,1,1,1

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_livam_sync_all" model="ir.actions.server">
+        <field name="name">LiVaM synchronisieren</field>
+        <field name="model_id" ref="model_livam_license"/>
+        <field name="state">code</field>
+        <field name="code">model.action_sync_all()</field>
+    </record>
+
+    <menuitem id="menu_livam_root" name="LiVaM" sequence="120"
+              groups="livam_management.group_livam_manager"/>
+    <menuitem id="menu_livam_licenses" parent="menu_livam_root" name="Lizenzen"
+              action="action_livam_license" sequence="10"/>
+    <menuitem id="menu_livam_license_create" parent="menu_livam_root"
+              name="Lizenz anlegen" action="action_livam_license_create_wizard"
+              sequence="15"/>
+    <menuitem id="menu_livam_installations" parent="menu_livam_root"
+              name="Installationen" action="action_livam_installation" sequence="20"/>
+    <menuitem id="menu_livam_releases" parent="menu_livam_root" name="Releases"
+              action="action_livam_release" sequence="30"/>
+    <menuitem id="menu_livam_saas_instances" parent="menu_livam_root"
+              name="SaaS-Instanzen" action="action_livam_saas_instance" sequence="40"/>
+    <menuitem id="menu_livam_saas_instance_register" parent="menu_livam_root"
+              name="SaaS-Instanz registrieren" action="action_livam_saas_instance_wizard"
+              sequence="45"/>
+    <menuitem id="menu_livam_sync" parent="menu_livam_root" name="Synchronisieren"
+              action="action_livam_sync_all" sequence="50"/>
+</odoo>

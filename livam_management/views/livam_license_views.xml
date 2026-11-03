@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_livam_license_tree" model="ir.ui.view">
+        <field name="name">livam.license.tree</field>
+        <field name="model">livam.license</field>
+        <field name="arch" type="xml">
+            <tree create="false">
+                <field name="name"/>
+                <field name="license_type"/>
+                <field name="status" widget="badge"
+                       decoration-success="status == 'active'"
+                       decoration-warning="status == 'suspended'"
+                       decoration-danger="status in ('expired', 'cancelled')"/>
+                <field name="payment_status" widget="badge"
+                       decoration-success="payment_status == 'paid'"
+                       decoration-warning="payment_status == 'unpaid'"/>
+                <field name="tenant_ref"/>
+                <field name="domain"/>
+                <field name="partner_id"/>
+                <field name="saas_instance_id"/>
+                <field name="ends_at"/>
+                <field name="installation_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_livam_license_form" model="ir.ui.view">
+        <field name="name">livam.license.form</field>
+        <field name="model">livam.license</field>
+        <field name="arch" type="xml">
+            <form string="LiVaM-Lizenz">
+                <header>
+                    <button name="action_mark_paid" type="object" string="Als bezahlt markieren"
+                            confirm="Diese Lizenz in LiVaM als bezahlt markieren?"
+                            attrs="{'invisible': [('payment_status', '=', 'paid')]}"/>
+                    <button name="action_renew" type="object" string="Verlängern"
+                            confirm="Laufzeit in LiVaM verlängern?"/>
+                    <button name="action_suspend" type="object" string="Suspendieren"
+                            confirm="Lizenz in LiVaM suspendieren?"
+                            attrs="{'invisible': [('status', '!=', 'active')]}"/>
+                    <button name="action_activate" type="object" string="Aktivieren"
+                            confirm="Lizenz in LiVaM aktivieren?"
+                            attrs="{'invisible': [('status', '!=', 'suspended')]}"/>
+                    <button name="%(action_livam_license_features_wizard)d" type="action"
+                            string="Features"/>
+                    <button name="%(action_livam_move_license_wizard)d" type="action"
+                            string="Verschieben"/>
+                    <button name="action_sync_one" type="object" string="Aktualisieren"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group string="Identität">
+                            <field name="livam_id"/>
+                            <field name="license_key"/>
+                            <field name="license_type"/>
+                        </group>
+                        <group string="Status">
+                            <field name="status"/>
+                            <field name="payment_status"/>
+                            <field name="auto_renew"/>
+                            <field name="renewal_status"/>
+                            <field name="highlight"/>
+                            <field name="transition"/>
+                        </group>
+                        <group string="Tenant">
+                            <field name="tenant_ref"/>
+                            <field name="domain"/>
+                            <field name="customer_name"/>
+                            <field name="customer_email"/>
+                            <field name="billing_cycle"/>
+                            <field name="provisioning_status"/>
+                            <field name="tenant_runtime_status"/>
+                        </group>
+                        <group string="Zuordnung &amp; Laufzeit">
+                            <field name="partner_id"/>
+                            <field name="saas_instance_id"/>
+                            <field name="saas_instance_ref"/>
+                            <field name="max_instances"/>
+                            <field name="installation_count"/>
+                            <field name="starts_at"/>
+                            <field name="ends_at"/>
+                            <field name="last_synced_at"/>
+                        </group>
+                        <group string="Features">
+                            <field name="features"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_livam_license_search" model="ir.ui.view">
+        <field name="name">livam.license.search</field>
+        <field name="model">livam.license</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="status"/>
+                <field name="partner_id"/>
+                <filter name="active_licenses" string="Aktiv"
+                        domain="[('status', '=', 'active')]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_livam_license" model="ir.actions.act_window">
+        <field name="name">Lizenzen</field>
+        <field name="res_model">livam.license</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_livam_license_search"/>
+    </record>
+</odoo>
