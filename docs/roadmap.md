@@ -5,7 +5,8 @@ Legende: ☐ offen · ◐ in Arbeit · ☑ erledigt
 ## M0 — Setup & Dokumentation
 
 - ☑ ADR-Set, Roadmap, Architektur-, Integrations-, Sicherheits- und Rechts-Doku
-- ◐ Öffentliches GitHub-Repo `livam-odoo` (AGPL-3.0) + CI (pre-commit)
+- ◐ Öffentliches GitHub-Repo `livam-odoo` (AGPL-3.0) + CI (pre-commit;
+  `.pre-commit-config.yaml` liegt, GitHub-Workflow fehlt noch)
 - ◐ SSH-Zugang zum Odoo-Server (Key für den `odoo`-Benutzer)
 
 ## M1 — LiVaM: Tenant-/Domain-Konzept
@@ -18,10 +19,10 @@ Legende: ☐ offen · ◐ in Arbeit · ☑ erledigt
 
 ## M2 — LiVaM: Multi-SaaS-Instanz
 
-- ☐ `saas_instances`-Registry (mTLS-Identität, Kapazität/Auslastung, Status)
-- ☐ Automatische Platzierung nach Auslastung
-- ☐ Tenant-Verschieben `POST /licenses/:id/move`
-- ☐ Operator-Endpoints `GET/POST /saas-instances`
+- ☑ `saas_instances`-Registry (mTLS-Identität, Kapazität/Auslastung, Status)
+- ☑ Automatische Platzierung nach Auslastung
+- ☑ Tenant-Verschieben `POST /licenses/:id/move`
+- ☑ Operator-Endpoints `GET/POST /saas-instances`
 
 ## M3 — Odoo: `livam_connector`
 
